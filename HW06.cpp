@@ -64,7 +64,7 @@ void Delete(){
             previous=previous->next;
         }
         current=current->next;
-        else if(current->no==del_number){
+        if(current->no==del_number){
             if(head->next->no==del_number){
                 head=head->next;
                 current=NULL;
@@ -99,10 +99,6 @@ void Search(){
         cin>>ans;
         if(ans==1){
             cout<<"編號："<<current->no<<endl<<"姓名："<<current->name<<endl<<"平時；"<<current->normal<<endl<<"期中："<<current->mid<<endl<<"期末："<<current->fin<<endl<<endl;
-            break;
-        }
-        else if(ans==2){
-            break;
         }
     }
 }
