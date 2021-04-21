@@ -58,11 +58,11 @@ int main(){
 	int del_number=0;
 	int sear_num=0;
 	while(s){
-		cout<<"(1).·s¼W¾Ç¥Í¸ê®Æ"<<endl;
-		cout<<"(2).§R°£¾Ç¥Í¸ê®Æ"<<endl;
-		cout<<"(3).¦C¦L¦ê¦C¸ê®Æ"<<endl;
-		cout<<"(4).Â÷¶}"<<endl;
-		cout<<"½Ð¿é¤J¿ï¾Ü¶µ¥Ø¡H";
+		cout<<"(1).æ–°å¢žå­¸ç”Ÿè³‡æ–™"<<endl;
+		cout<<"(2).åˆªé™¤å­¸ç”Ÿè³‡æ–™"<<endl;
+		cout<<"(3).åˆ—å°ä¸²åˆ—è³‡æ–™"<<endl;
+		cout<<"(4).é›¢é–‹"<<endl;
+		cout<<"è«‹è¼¸å…¥é¸æ“‡é …ç›®ï¼Ÿ";
 		cin>>s;
 		switch(s){
 			case 1:
@@ -71,30 +71,30 @@ int main(){
 					int n=0;
 					char na[10];
 					current=head->get_ptr();
-					cout<<"½Ð¿é¤J®y¸¹¡G";
+					cout<<"è«‹è¼¸å…¥åº§è™Ÿï¼š";
 					cin>>n;
 					do{
-                        while(current!=NULL&&current->get_no()!=n){
-                            current=current->get_ptr();
-                        }
-                        if(current==NULL){
-                            i=0;
-                        }
-                        else if(current->get_no()==n){
-                            cout<<"®y¸¹¤£±o­«½Æ¡A½Ð­«·s¿é¤J¡G";
-                            cin>>n;
-                            i=1;
-                        }
+                        			while(current!=NULL&&current->get_no()!=n){
+                            				current=current->get_ptr();
+                        			}
+                        			if(current==NULL){
+                           				i=0;
+                        			}
+                        			else if(current->get_no()==n){
+                            				cout<<"åº§è™Ÿä¸å¾—é‡è¤‡ï¼Œè«‹é‡æ–°è¼¸å…¥ï¼š";
+                            				cin>>n;
+                            				i=1;
+                        			}
 					}while(i);
 					now->set_no(n);
 					cin.ignore();
-					cout<<"½Ð¿é¤J©m¦W¡G";
+					cout<<"è«‹è¼¸å…¥å§“åï¼š";
 					cin.getline(na,10);
 					now->set_name(na);
-					cout<<"½Ð¿é¤J­p·§¦¨ÁZ¡G";
+					cout<<"è«‹è¼¸å…¥è¨ˆæ¦‚æˆç¸¾ï¼š";
 					cin>>n;
 					now->set_cs(n);
-					cout<<"½Ð¿é¤J¼Æ¾Ç¦¨ÁZ¡G";
+					cout<<"è«‹è¼¸å…¥æ•¸å­¸æˆç¸¾ï¼š";
 					cin>>n;
 					now->set_math(n);
 					while(now->get_no()!=0){
@@ -112,12 +112,12 @@ int main(){
 						}
 						x=x->get_ptr();
 					}
-					cout<<"Ä~Äò½Ð«ö'1'¡Aµ²§ô½Ð«ö'0'¡G";
+					cout<<"ç¹¼çºŒè«‹æŒ‰'1'ï¼ŒçµæŸè«‹æŒ‰'0'ï¼š";
 					cin>>m;
 				}while(m);
 				break;
 			case 2:
-			    cout<<"½Ð¿é¤J±ý§R°£¤§®y¸¹¡G";
+			    cout<<"è«‹è¼¸å…¥æ¬²åˆªé™¤ä¹‹åº§è™Ÿï¼š";
 			    cin>>del_number;
 			    current=head->get_ptr();
 			    previous=head;
@@ -126,25 +126,25 @@ int main(){
 			        previous=previous->get_ptr();
 			    }
 			    if(current==NULL){
-			        cout<<"¸Óµ§¸ê®Æ¤£¦s¦b¡AµLªk§R°£"<<endl;
+			        cout<<"è©²ç­†è³‡æ–™ä¸å­˜åœ¨ï¼Œç„¡æ³•åˆªé™¤"<<endl;
 			    }
 			    else if(current->get_no()==del_number){
 			        if(current==head->get_ptr()){
 			            head=head->get_ptr();
 			            current=NULL;
-			            cout<<"¸Óµ§¸ê®Æ¤w¦¨¥\§R°£"<<endl;
+			            cout<<"è©²ç­†è³‡æ–™å·²æˆåŠŸåˆªé™¤"<<endl;
 			        }
 			        else{
 			            previous->set_ptr(current->get_ptr());
 			            current=NULL;
-			            cout<<"¸Óµ§¸ê®Æ¤w¦¨¥\§R°£"<<endl;
+			            cout<<"è©²ç­†è³‡æ–™å·²æˆåŠŸåˆªé™¤"<<endl;
 			        }
 			    }
 				break;
 			case 3:
 				now=head->get_ptr();
 				if(now==NULL){
-			        cout<<"©|¥¼¦³¾Ç¥Í¸ê®Æ"<<endl;
+			        cout<<"å°šæœªæœ‰å­¸ç”Ÿè³‡æ–™"<<endl;
 				}
 				if(now!=NULL){
                     cout<<"head->";
