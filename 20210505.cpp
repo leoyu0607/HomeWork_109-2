@@ -48,7 +48,7 @@ class stnode{
             string findName;
             system("cls");
             cin.get();
-            cout<<"請輸入想找的學生之姓名";
+            cout<<"請輸入想找的學生之姓名：";
             getline(cin,findName);
             while(1){
                 if(curr->get_name()==findName){
@@ -62,7 +62,7 @@ class stnode{
                     cout<<"此學生不存在"<<endl;
                     break;
                 }
-                curr=curr->get_ptr;
+                curr = curr->get_ptr();
             }
 		}
 		void del(stnode* node){
@@ -73,14 +73,14 @@ class stnode{
             cout<<"請輸入欲刪除之學生座號：";
             cin>>del_num;
             while(1){
-                if(curr->get_no == del_num){
+                if(curr->get_no() == del_num){
                     prev->set_ptr(curr->get_ptr());
                     delete curr;
                     system("cls");
-                    cout<<"該筆資料已成功刪除"<<endl;
+                    cout<<"該筆資料已刪除"<<endl;
                     break;
                 }
-                if(curr->get_ptr == NULL){
+                if(curr->get_ptr() == NULL){
                     system("cls");
                     cout<<"該筆資料不存在，無法刪除"<<endl;
                     break;
@@ -93,7 +93,7 @@ class stnode{
 		void print(stnode* node){
             bool check = true;
             stnode* curr = new stnode();
-            if(node->get_ptr != NULL){
+            if(node->get_ptr() != NULL){
                 curr = node->get_ptr();
             }
             else{
@@ -131,11 +131,67 @@ class stnode{
                     check2 = false;
                 }
                 while(check2){
-                    if(curr->get_no() == noe->get_no()){
-                        cout<<"座號不得重複，請重新輸入："
+                    if(curr->get_no() == now->get_no()){
+                        cout<<"座號不得重複，請重新輸入：";
+                        check = true;
+                        break;
+                    }
+                    if(curr->get_ptr() == NULL){
+                        check = false;
+                        break;
                     }
                     curr = curr->get_ptr();
                 }
+                check2 = true;
+            }
+            check = true;
+            cin.get();
+            cout<<"請輸入姓名：";
+            getline(cin,s);
+            now->set_name(s);
+            cout<<"請輸入計概成績：";
+            while(check){
+                cin>>n;
+                if(n<0||n>100){
+                    cout<<"成績需在0到100之間，請重新輸入";
+                    check = true;
+                }
+                else{
+                    check = false;
+                }
+            }
+            check = true;
+            now->set_cs(n);
+            cout<<"請輸入數學成績：";
+            while(check){
+                cin>>n;
+                if(n<0||n>100){
+                    cout<<"成績需在0到100之間，請重新輸入";
+                    check = true;
+                }
+                else{
+                    check = false;
+                }
+            }
+            check = true;
+            now->set_math(n);
+            now->set_total((now->get_cs() + now->get_math()) / 2);
+            while(check){
+                if(curr->get_no() >= now->get_no()){
+                    prev->set_ptr(now);
+                    prev->get_ptr()->set_ptr(curr);
+                    cout<<"資料已加入";
+                    break;
+                }
+                if(curr->get_ptr() == NULL){
+                    curr->set_ptr(now);
+                    cout<<"資料已加入";
+                    break;
+                }
+                if(curr != node){
+                    prev = prev->get_ptr();
+                }
+                curr = curr->get_ptr();
             }
 		}
 };
@@ -146,7 +202,7 @@ int menu(){
 	cout<<"(3). 查詢學生資料"<<endl;
 	cout<<"(4). 列印串列資料"<<endl;
 	cout<<"(0). 離開"<<endl;
-	cout<<"請輸入選擇項目？";
+	cout<<"請輸入選擇項目：";
 	cin>>i;
 	return i;
 }
@@ -155,14 +211,24 @@ int main(){
 	int num;
 	int choice;
 	bool check=true;
+	head->set_ptr(NULL);
+	head->set_no(-1);
 	while(check){
         choice=menu();
         system("cls");
 		switch(choice){
-        case 1:break;
-        case 2:break;
-        case 3:break;
-        case 4:break;
+        case 1:
+            head->add(head);
+            break;
+        case 2:
+            head->del(head);
+            break;
+        case 3:
+            head->find_name(head);
+            break;
+        case 4:
+            head->print(head);
+            break;
         case 0:check=false;break;
         default:
             cout<<"Wrong Input"<<endl<<endl;
