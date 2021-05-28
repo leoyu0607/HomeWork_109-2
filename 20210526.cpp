@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<iomanip>
 using namespace std;
 
 class student{
@@ -221,17 +222,20 @@ int main(){
                 }
                 else{
                     system("cls");
-                    cout<<"head->||"<<endl;
+                    cout<<"串列內無資料"<<endl;
                     e = false;
                 }
                 if(e){
                     system("cls");
-                    cout<<"head->";
+                    cout<<"|  座號  |"<<"|  姓名  |"<<"|  計概  |"<<"|  數學  |"<<"| 總成績 |"<<endl;
                     do{
-                        cout<<now2->get_num()<<"->";
+                        cout<<"|"<<setw(5)<<now2->get_num()<<"   |";
+                        cout<<"|"<<setw(7)<<now2->get_name()<<" |";
+                        cout<<"|"<<setw(5)<<now2->get_cs()<<"   |";
+                        cout<<"|"<<setw(5)<<now2->get_math()<<"   |";
+                        cout<<"|"<<setw(5)<<now2->get_total()<<"   |"<<endl;
                         now2 = now2->get_next();
                     }while(now2);
-                    cout<<"||";
                 }
                 break;
                 }
